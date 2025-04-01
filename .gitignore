@@ -1,0 +1,16 @@
+# Ignore virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Ignore model files (optional if you want to regenerate on Streamlit Cloud)
+*.pkl
+*.pkl.gz
+
+# Ignore datasets
+shooting_data.csv
+
+# Ignore logs and system files
+.DS_Store
+*.log
+*.swp
