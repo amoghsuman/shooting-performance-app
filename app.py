@@ -151,3 +151,24 @@ X_input[numerical_cols] = scaler.transform(X_input[numerical_cols])
 if st.button("Predict Shot Accuracy"):
     prediction = model.predict(X_input)[0]
     st.success(f"🎯 Predicted Shot Accuracy: {prediction:.2f}%")
+
+    st.markdown("---")
+    st.markdown("### 📘 What This Means:")
+
+    st.markdown(f"""
+    - A predicted shooting accuracy of **{prediction:.2f}%** reflects how precise the shooter is likely to be under the given conditions.
+    - This percentage is calculated based on your inputs like fatigue level, grouping size, lighting conditions, and more.
+    - You can experiment with the inputs to see how different environmental or physical conditions affect performance.
+
+    ---
+
+    ### 🎯 Tips to Improve Accuracy:
+    - **Reduce fatigue**: Ensure proper rest before sessions.
+    - **Improve reaction time**: Practice reflex drills and timed shooting.
+    - **Control groupings**: Focus on consistent hand-eye coordination.
+    - **Practice under pressure**: Simulate competition environments.
+    - **Train in varied conditions**: Wind, temperature, lighting — adapt to all.
+
+    Try changing some inputs to see how these factors impact your predicted performance!
+    """)
+
