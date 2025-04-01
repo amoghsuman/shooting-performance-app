@@ -18,8 +18,19 @@ feature_names = load_gz_pickle("feature_names.pkl.gz")
 # UI starts
 st.title("🎯 AI Shooting Accuracy Predictor")
 
+st.markdown("""
+This app predicts a shooter's performance accuracy based on various physical, environmental, and behavioral inputs.
+
+The prediction is made using a trained AI model that analyzes **15+ features** affecting a shooter's performance during training or competitions.
+""")
+
 # Input widgets
-experience = st.selectbox("Experience Level", ["Beginner", "Intermediate", "Expert"])
+#experience = st.selectbox("Experience Level", ["Beginner", "Intermediate", "Expert"])
+experience = st.selectbox(
+    "Experience Level",
+    ["Beginner", "Intermediate", "Expert"],
+    help="Shooter's skill classification based on training and experience level."
+)
 handedness = st.radio("Handedness", ["Left", "Right"])
 fatigue = st.slider("Fatigue Level", 0, 100, 50)
 score = st.slider("Score", 60, 100, 85)
