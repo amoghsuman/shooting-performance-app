@@ -34,6 +34,7 @@ def generate_shooting_data(num_shooters=100, num_sessions=10000):
 
     # Simulate realistic target variable
     # Lower fatigue, tighter grouping, more experience → higher accuracy
+    # Simulate realistic target variable
     experience_score = df["Experience_Level"].map({"Beginner": 0, "Intermediate": 1, "Expert": 2})
     lighting_score = df["Lighting_Conditions"].map({"Poor": -5, "Average": 0, "Good": 5})
     training_penalty = df["Training_Type"].map({"Static Shooting": 5, "Moving Target": -3, "Competitive Match": -5})
@@ -43,10 +44,13 @@ def generate_shooting_data(num_shooters=100, num_sessions=10000):
         - 0.3 * df["Fatigue_Level"]
         - 0.7 * df["Grouping_Size (cm)"]
         - 0.5 * df["Reaction_Time (sec)"] * 10
+        - 0.3 * df["Wind_Speed (km/h)"]
+        - 0.2 * df["Pressure_Level (0-100)"] / 10
+        - 0.1 * df["Humidity (%)"] / 10
         + 3 * experience_score
         + lighting_score
         + training_penalty
-        + np.random.normal(0, 3, size=len(df))  # some randomness
+        + np.random.normal(0, 2.5, size=len(df))
     ).clip(0, 100).round(2)
 
     df.to_csv("shooting_data.csv", index=False)

@@ -5,7 +5,6 @@ __pycache__/
 
 # Ignore model files (optional if you want to regenerate on Streamlit Cloud)
 *.pkl
-*.pkl.gz
 
 # Ignore datasets
 shooting_data.csv
