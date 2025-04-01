@@ -25,26 +25,95 @@ The prediction is made using a trained AI model that analyzes **15+ features** a
 """)
 
 # Input widgets
-#experience = st.selectbox("Experience Level", ["Beginner", "Intermediate", "Expert"])
 experience = st.selectbox(
     "Experience Level",
     ["Beginner", "Intermediate", "Expert"],
     help="Shooter's skill classification based on training and experience level."
 )
-handedness = st.radio("Handedness", ["Left", "Right"])
-fatigue = st.slider("Fatigue Level", 0, 100, 50)
-score = st.slider("Score", 60, 100, 85)
-grouping = st.slider("Grouping Size (cm)", 5.0, 20.0, 10.0)
-reaction = st.slider("Reaction Time (sec)", 0.5, 3.0, 1.5)
-pressure = st.slider("Pressure Level", 0, 100, 50)
-wind = st.slider("Wind Speed (km/h)", 0, 20, 5)
-temp = st.slider("Temperature (°C)", 10, 35, 25)
-humidity = st.slider("Humidity (%)", 20, 80, 50)
-lighting = st.selectbox("Lighting Conditions", ["Poor", "Average", "Good"])
-altitude = st.slider("Altitude (m)", 100, 2000, 500)
-training = st.selectbox("Training Type", ["Static Shooting", "Moving Target", "Competitive Match"])
-shots = st.slider("Number of Shots", 5, 50, 20)
-age = st.slider("Age", 18, 60, 30)
+
+handedness = st.radio(
+    "Handedness",
+    ["Left", "Right"],
+    help="Which hand the shooter primarily uses to shoot."
+)
+
+fatigue = st.slider(
+    "Fatigue Level",
+    0, 100, 50,
+    help="Shooter's physical tiredness level. Lower is better for performance."
+)
+
+score = st.slider(
+    "Score",
+    60, 100, 85,
+    help="Total session score out of 100. Reflects prior shooting performance."
+)
+
+grouping = st.slider(
+    "Grouping Size (cm)",
+    5.0, 20.0, 10.0,
+    help="Spread of bullet holes on the target. Smaller groupings indicate better aim."
+)
+
+reaction = st.slider(
+    "Reaction Time (sec)",
+    0.5, 3.0, 1.5,
+    help="Time taken to react and shoot. Faster reaction improves performance."
+)
+
+pressure = st.slider(
+    "Pressure Level",
+    0, 100, 50,
+    help="Shooter's perceived mental pressure during the session."
+)
+
+wind = st.slider(
+    "Wind Speed (km/h)",
+    0, 20, 5,
+    help="Wind conditions during the session. Higher wind can reduce accuracy."
+)
+
+temp = st.slider(
+    "Temperature (°C)",
+    10, 35, 25,
+    help="Ambient temperature during shooting. Extreme heat or cold may impact comfort."
+)
+
+humidity = st.slider(
+    "Humidity (%)",
+    20, 80, 50,
+    help="Humidity level during the session. Can influence bullet trajectory slightly."
+)
+
+lighting = st.selectbox(
+    "Lighting Conditions",
+    ["Poor", "Average", "Good"],
+    help="Quality of lighting at the shooting location."
+)
+
+altitude = st.slider(
+    "Altitude (m)",
+    100, 2000, 500,
+    help="Elevation of shooting range above sea level. Higher altitudes can affect trajectory."
+)
+
+training = st.selectbox(
+    "Training Type",
+    ["Static Shooting", "Moving Target", "Competitive Match"],
+    help="Type of session. Static targets are easiest, matches are hardest."
+)
+
+shots = st.slider(
+    "Number of Shots",
+    5, 50, 20,
+    help="Total number of shots fired in the session. More shots can stabilize performance."
+)
+
+age = st.slider(
+    "Age",
+    18, 60, 30,
+    help="Age of the shooter. Age may correlate with experience and physical sharpness."
+)
 
 # Encode categories
 experience_enc = label_encoders["Experience_Level"].transform([experience])[0]
